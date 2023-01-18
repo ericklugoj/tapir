@@ -1,0 +1,21 @@
+* {
+  font-family: $primary-font;
+  font-weight: 400;
+  cursor: default;
+}
+
+*,
+*:after,
+*:before {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  text-decoration: none;
+}
+
+body {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+}
