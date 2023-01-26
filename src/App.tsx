@@ -1,13 +1,15 @@
-import { StartScreen } from './views/StartScreen';
+import { GlobalProvider } from './context';
+import { Tapir } from './templates';
 
-import styles from './app.module.scss';
 import './styles/main.scss';
 
 function App() {
   return (
-    <div className={styles.app}>
-      <StartScreen />
-    </div>
+    <>
+      <GlobalProvider>
+        <Tapir />
+      </GlobalProvider>
+    </>
   );
 }
 

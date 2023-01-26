@@ -1,17 +1,21 @@
-import { useState } from 'react';
+import { useGlobalValues } from '../../context';
+
 import styles from './styles.module.scss';
 
 const StartScreen = () => {
-  const [taps, setTaps] = useState(0);
   const handleClick = () => {
-    setTaps((prevState) => prevState + 1);
+    dispatch({ type: 'setCurrentScreen', payload: 'SEARCHING_PLAYERS_SCREEN' });
   };
 
+  const { state, dispatch } = useGlobalValues();
+
+  console.log({ state });
+
   return (
-    <main className={styles['start-screen']} onClick={handleClick}>
+    <div className={styles['start-screen']} onClick={handleClick}>
       <h1>Tap to start</h1>
-      <p>{taps} players looking for a match</p>
-    </main>
+      <p>0 players looking for a match</p>
+    </div>
   );
 };
 
