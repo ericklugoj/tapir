@@ -5,10 +5,14 @@ import { useSound } from '../../hooks';
 import bgSound from '../../assets/bg-music.mp3';
 
 function SearchingScreen() {
-  const { playSound } = useSound(bgSound);
+  const { playSound, stopSound } = useSound(bgSound);
 
   useEffect(() => {
-    playSound();
+    playSound({ loop: false });
+
+    return () => {
+      stopSound();
+    };
   }, []);
 
   return <div>SearchingScreen</div>;
