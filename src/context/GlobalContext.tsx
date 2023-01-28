@@ -7,9 +7,9 @@ type Screen =
   | 'GAME_OVER_SCREEN';
 type Action =
   | { type: 'setCurrentScreen'; payload: Screen }
-  | { type: 'decrement' };
+  | { type: 'setMute'; payload: boolean };
 type Dispatch = (action: Action) => void;
-type State = { currentScreen: Screen };
+type State = { currentScreen: Screen; mute: boolean };
 type GlobalProviderProps = { children: ReactNode };
 
 const GlobalStateContext = createContext<
@@ -18,18 +18,20 @@ const GlobalStateContext = createContext<
 
 function globalReducer(state: State, action: Action) {
   switch (action.type) {
-    case 'setCurrentScreen': {
-      return { currentScreen: action.payload };
-    }
+    case 'setCurrentScreen':
+      return { ...state, currentScreen: action.payload };
 
-    default: {
-      throw new Error(`Unhandled action type: ${action.type}`);
-    }
+    case 'setMute':
+      return { ...state, mute: action.payload };
+
+    default:
+      return state;
   }
 }
 
 const initialState: State = {
   currentScreen: 'START_SCREEN',
+  mute: false,
 };
 
 function GlobalProvider({ children }: GlobalProviderProps) {

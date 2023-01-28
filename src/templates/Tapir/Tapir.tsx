@@ -1,7 +1,8 @@
-import { StartScreen, SearchingScreen } from '../../views';
 import { useGlobalValues } from '../../context';
+import { StartScreen, SearchingScreen } from '../../views';
+import { MuteButton } from '../../components';
 
-import styles from '../../app.module.scss';
+import styles from './styles.module.scss';
 
 function Tapir() {
   const { state } = useGlobalValues();
@@ -27,7 +28,14 @@ function Tapir() {
     }
   };
 
-  return <div className={styles.app}>{renderScreen()}</div>;
+  return (
+    <main className={styles.app}>
+      <div className={styles['app__mute-button']}>
+        <MuteButton />
+      </div>
+      {renderScreen()}
+    </main>
+  );
 }
 
 export default Tapir;

@@ -1,0 +1,17 @@
+.searching-screen {
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+
+  h3:first-of-type {
+    font-family: 'Press Start 2P', cursive;
+    text-align: center;
+    margin-top: 32px;
+  }
+
+  img {
+    width: 50%;
+  }
+}

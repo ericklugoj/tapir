@@ -1,10 +1,16 @@
 .app {
   border: 1px solid red;
+  position: relative;
   width: 480px;
   height: 90vh;
 
+  &__mute-button {
+    position: absolute;
+    right: 0;
+    padding: 8px;
+  }
+
   @media (max-width: 480px) {
-    border: 1px solid green;
     width: 100vw;
     height: 100vh;
   }
