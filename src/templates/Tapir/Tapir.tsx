@@ -1,5 +1,5 @@
 import { useGlobalValues } from '../../context';
-import { StartScreen, SearchingScreen } from '../../views';
+import { StartScreen, SearchingScreen, GameScreen } from '../../views';
 import { MuteButton } from '../../components';
 
 import styles from './styles.module.scss';
@@ -18,7 +18,7 @@ function Tapir() {
         return <SearchingScreen />;
 
       case 'GAME_SCREEN':
-        return <StartScreen />;
+        return <GameScreen />;
 
       case 'GAME_OVER_SCREEN':
         return <StartScreen />;

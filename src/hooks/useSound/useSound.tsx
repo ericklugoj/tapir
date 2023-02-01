@@ -1,4 +1,4 @@
-import React, { useEffect, useMemo } from 'react';
+import React, { useEffect, useMemo, useRef } from 'react';
 import { useGlobalValues } from '../../context';
 
 type PlayConfig = {
@@ -6,11 +6,12 @@ type PlayConfig = {
 };
 
 function useSound(src: string) {
-  const sound = useMemo(() => new Audio(src), [src]);
+  const sound = useRef<HTMLAudioElement>(new Audio(src));
   const { state } = useGlobalValues();
   const { mute } = state;
 
   useEffect(() => {
+    console.log('hook effect called');
     if (mute) {
       muteSound(true);
     } else {
@@ -19,21 +20,22 @@ function useSound(src: string) {
   }, [mute]);
 
   const playSound = ({ loop }: PlayConfig) => {
-    sound.loop = loop;
-    sound.play();
+    sound.current.loop = loop;
+    sound.current.play();
   };
 
   const pauseSound = () => {
-    sound.pause();
+    sound.current.pause();
   };
 
   const stopSound = () => {
-    sound.pause();
-    sound.currentTime = 0;
+    sound.current.pause();
+    sound.current.currentTime = 0;
   };
 
   const muteSound = (isMute: boolean) => {
-    sound.muted = isMute;
+    console.log('mute called');
+    sound.current.muted = isMute;
   };
 
   return { playSound, pauseSound, stopSound, muteSound };

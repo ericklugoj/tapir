@@ -3,13 +3,11 @@ import { useGlobalValues } from '../../context';
 import styles from './styles.module.scss';
 
 const StartScreen = () => {
+  const { state, dispatch } = useGlobalValues();
+
   const handleClick = () => {
     dispatch({ type: 'setCurrentScreen', payload: 'SEARCHING_PLAYERS_SCREEN' });
   };
-
-  const { state, dispatch } = useGlobalValues();
-
-  console.log({ state });
 
   return (
     <div className={styles['start-screen']} onClick={handleClick}>

@@ -1,2 +1,3 @@
-export { StartScreen } from './StartScreen';
-export { SearchingScreen } from './SearchingScreen';
+export * from './StartScreen';
+export * from './SearchingScreen';
+export * from './GameScreen';
